@@ -1,0 +1,132 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}edit{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/agent_home"><p class="na" id="dashboard">Home</p></a>
+    <a href="/registry"><p class="na" id="inbox">Registry</p></a>
+    <a href="/logout_agent"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+        #agent{
+               color:red;
+               font-weight:bold;
+               transition: 0.3s;
+           letter-spacing: 1px;
+           }
+   </style>
+{%endblock%}
+{% block content %}
+<div class="body">
+    <h2 class="heading">Edit Member</h2>
+    <p class="note">Name: {{member_data[1]}} {{member_data[2]}} </p>
+    <div class="agent_form" id="agent_form">
+        <div class="default"></div>
+        <div class="container">
+            <div class="hidden" id="shader">
+                <div id="registerPop" class="hidden">
+                    <div class="loader" id="loader"></div>
+                    <div class="tick hidden" id="tick">&#10004;</div>
+                    <p class="userd" id="inproc">Saving changes...</p>
+                    <p class="userd" id="done">Done!</p>
+                    <input type="button" class="ok" id="ok" value="Ok">
+                </div>
+            </div>
+            <form id="edit_member">
+            <p class="user">Firstname</p>
+            <input type="text" class="username" name="{{member_data[0]}}" placeholder="{{member_data[1]}}" id="firstname" required>
+            <p class="user">Lastname</p>
+            <input type="text" class="username" placeholder="{{member_data[2]}}" id="lastname" required>
+            <p class="user">Year of Birth**</p>
+            <input type="text" class="username" placeholder="{{member_data[3]}}" id="yod" required>
+
+            <p class="user">Gender</p>
+            <select class="gender" id="gender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                </select>
+
+            <p class="user">Phone number</p>
+            <input type="text" class="username" placeholder="{{member_data[7]}}" id="phone_number" required>
+        
+            <p class="user">Zone</p>
+          <select class="gender" id="zone">
+            <option value="">Select</option>
+            {%for row in zone_list %}
+            <option value="{{row[1]}}">{{row[1]}}</option>
+            {%endfor%}
+        </select>
+
+        
+        <p class="user">Residence area</p>
+        <select class="gender" id="residence">
+            <option value="">Select</option>
+            {%for row in area_list %}
+            <option value="{{row[1]}}">{{row[1]}}</option>
+            {%endfor%}
+        </select>
+            <input type="submit" class="submit" value="Edit">
+        </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('edit_member').addEventListener('submit', function(event){
+      event.preventDefault();
+      var first_name=document.getElementById('firstname').value.trim();
+      var last_name=document.getElementById('lastname').value.trim();
+      var phone_number=document.getElementById('phone_number').value.trim();
+      var gender=document.getElementById('gender').value.trim();
+      var year_of_birth=document.getElementById('yod').value.trim();
+
+      let inputElement=document.getElementById('firstname');
+      let member_ID=inputElement.getAttribute('name');
+
+      var zone=document.getElementById('zone').value;
+        var residence=document.getElementById('residence').value;
+
+      
+      const popup=document.getElementById('registerPop');
+      const loader=document.getElementById('loader');
+      const tick=document.getElementById('tick');
+      const inproc=document.getElementById('inproc');
+      const done=document.getElementById('done');
+      const closer=document.getElementById('ok');
+      const shader=document.getElementById('shader');
+      if(first_name && last_name && phone_number && gender && year_of_birth && residence ){
+
+      popup.classList.remove('hidden');
+      loader.classList.remove('hidden');
+      shader.classList.remove('hidden');
+      tick.classList.add('hidden');
+      closer.classList.add('hidden');
+      inproc.classList.remove('hidden');
+      done.classList.add('hidden');
+      registerMember();
+        }
+  function registerMember(){
+            $.ajax({
+            type: 'POST',
+            url:'/edit_member',
+            data: {firstname: first_name, lastname: last_name, phonenumber:phone_number, year:year_of_birth, gender:gender, zone:zone, residence:residence, memberID:member_ID},
+            success:
+            function(response){
+                loader.classList.add('hidden');
+                tick.classList.remove('hidden')
+                inproc.classList.add('hidden');
+                done.classList.remove('hidden');
+                closer.classList.remove('hidden');
+            }
+        });
+    }
+
+  });
+  document.getElementById('ok').addEventListener('click', function(event){
+      location.reload();
+  });
+</script>
+{%endblock%}

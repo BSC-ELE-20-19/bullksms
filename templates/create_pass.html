@@ -1,0 +1,22 @@
+{% extends "agent_base.html" %}
+{% block title %}password{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block agent_body %}
+<div class="body">
+    <div class="banner_log">
+        <h2 class="message"></2>
+        <h2 class="message_log">Change Password</2>
+    </div>
+    <div class="inputs_log">
+        <form action="/change_pass" method="post">
+        <p class="user">Curent Password</p>
+        <input type="password" class="email" name="old_password" placeholder="Re-enter password" minlength="12" maxlength="15" required>
+        <p class="user">New Password</p>
+        <input type="password" class="email" name="user_password" placeholder="Password" minlength="12" maxlength="15" required>
+        <p class="user">Verify Password</p>
+        <input type="password" class="email" name="confirm_password" placeholder="Re-enter password" minlength="12" maxlength="15" required>
+        <a href="/change_pass"><input type="submit" class="signin" value="Save password"></a>
+    </form>
+    </div>
+    </div>
+{%endblock%}

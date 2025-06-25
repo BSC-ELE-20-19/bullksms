@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width" initial-scale="1">
+    <title></title>
+    <style></style>
+    <style>
+        *{
+            padding: 0px;
+            margin:0px;
+        }
+@media only screen and (max-width: 480px){
+        
+        .body{
+            position: relative;
+            width: 100%;
+            margin-top:20px;
+        }
+        .alerted{
+            position: relative;
+            height: 50px;
+            margin-top: 20px;
+            width: 75%;
+            margin-left: 8%;
+            background-color: rgba(255, 0, 0,0.1);
+            border: solid 1px red;
+            align-content: center;
+            color:black;
+            font-size:14px;
+            font-family:  'Poppins';
+            padding-left: 20px;
+
+        }
+        .banner{
+            position: relative;
+            width: 90%;
+            left:5%;
+            border: solid 1px #99cc33;
+            background-color: #99cc33;
+            border-radius: 5px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner_log{
+            position: relative;
+            width: 90%;
+            left:5%;
+            border: solid 1px white;
+            background-color: white;
+            border-radius: 5px;
+            height: 120px;
+            align-items: center;
+            align-content: center;
+        }
+        .message{
+            position: relative;
+     font-family: 'Poppins';
+     font-size: 34px;
+     color: white;
+     width:60%;
+     text-align: center;
+
+        }
+        .message_log{
+            position: relative;
+     font-family: 'Poppins';
+     font-size: 38px;
+     color: black;
+     width:90%;
+     left:10px;
+
+        }
+        .inputs{
+            position: relative;
+            width: 90%;
+            left:5%;
+            display: flex;
+            flex-direction: column;
+        }
+        .inputs_log{
+            position: relative;
+            width: 90%;
+            left:5%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            padding-bottom: 50px;
+        }
+        .forgot_pass{
+        position: relative;
+        color:black;
+        font-size:14px;
+        font-family:  'Poppins';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        left:5%;
+        }
+        .forgot_pas{
+        position: relative;
+        color:rgb(0, 255, 0);
+        font-size:14px;
+        font-family:  'Poppins';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        left:5%;
+        }
+        .as_admin{
+        position: absolute;
+        color:black;
+        font-size:16px;
+        font-family:  'Poppins';
+        margin-top: 20px;
+        margin-bottom: 10px;
+        left:10%;
+        font-weight: bold;
+        cursor: pointer;
+        letter-spacing: 1px;
+        text-decoration: underline;
+        }
+        .activate{
+            position: relative;
+            height: 50px;
+            width: 95%;
+            left:2%;
+            margin-top: 20px;
+            background-color: white;
+            color: #99cc33;
+            border-radius: 5px;
+            font-family:  'Poppins';
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border: solid 1px #99cc33;
+
+        }
+        .signin{
+            position: relative;
+            height: 50px;
+            width: 95%;
+            left:2%;
+            margin-top: 20px;
+            border: solid 1px #99cc33;
+            background-color: #99cc33;
+            color: white;
+            border-radius: 5px;
+            font-family:  'Poppins';
+            font-size: 16px;
+            font-weight: bold;
+
+        }
+        .user{
+     position: relative;
+    color:black;
+    font-size:16px;
+    margin-top:10px;
+    left: 10px;
+font-family: 'Poppins';
+font-weight: bold;
+letter-spacing: 1px;
+        }
+        .email{
+            position: relative;
+            height: 50px;
+            width: 90%;
+            left:2%;
+            border-radius: 5px;
+    margin-top:10px;
+    border: solid 1.5px black;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+
+        }
+        .number{
+            width: 95%;
+            font-size: 28px;
+            border: solid 2px #ccc;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+            height: 50px;
+            left: 2%;
+            letter-spacing: 15px;
+        }
+        .number:focus{
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.5);
+        }
+        input:active{
+            transform: scale(0.95);
+        }
+        @font-face {
+    font-family: 'Poppins';
+    src: url("../static/poppins-regular.ttf");
+        }
+        .selection{
+            position: relative;
+            margin-top: 10px;
+            border: solid 1px black;
+        }
+}
+@media only screen and (min-width: 480px){
+        
+        .body{
+            position: fixed;
+            width: 280px;
+            top:40%;
+            left:48%;
+            transform: translate(-50%,-50%);
+        }
+        .alerted{
+            position: relative;
+            height: 36px;
+            margin-top: 20px;
+            width: 75%;
+            margin-left: 8%;
+            background-color: rgba(255, 0, 0,0.1);
+            border: solid 1px red;
+            align-content: center;
+            color:black;
+            font-size:12px;
+            font-family:  'Poppins';
+            padding-left: 20px;
+
+        }
+        .banner{
+            position: relative;
+            width: 90%;
+            left:5%;
+            border: solid 1px #99cc33;
+            background-color: #99cc33;
+            border-radius: 5px;
+            height: 200px;
+              display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .banner_log{
+            position: relative;
+            width: 90%;
+            left:5%;
+            border: solid 1px white;
+            background-color: white;
+            border-radius: 5px;
+            height: 120px;
+            align-items: center;
+            align-content: center;
+        }
+        .message{
+            position: relative;
+     font-family: 'Poppins';
+     font-size: 22px;
+     color: white;
+     width:60%;
+     text-align: center;
+
+        }
+        .message_log{
+            position: relative;
+     font-family: 'Poppins';
+     font-size: 28px;
+     color: black;
+     width:90%;
+     left:10px;
+
+        }
+        .inputs{
+            position: relative;
+            width: 90%;
+            left:5%;
+            display: flex;
+            flex-direction: column;
+        }
+        .inputs_log{
+            position: relative;
+            width: 90%;
+            left:5%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            padding-bottom: 50px;
+        }
+        .forgot_pass{
+        position: relative;
+        color:black;
+        font-size:12px;
+        font-family:  'Poppins';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        left:5%;
+        }
+        .forgot_pas{
+        position: relative;
+        color:rgb(0, 255, 0);
+        font-size:12px;
+        font-family:  'Poppins';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        left:5%;
+        }
+        .as_admin{
+        position: absolute;
+        color:black;
+        font-size:12px;
+        font-family:  'Poppins';
+        margin-top: 20px;
+        margin-bottom: 10px;
+        left:10%;
+        font-weight: bold;
+        cursor: pointer;
+        letter-spacing: 1px;
+        text-decoration: underline;
+        }
+        .activate{
+            position: relative;
+            height: 36px;
+            width: 95%;
+            left:2%;
+            margin-top: 20px;
+            background-color: white;
+            color: #99cc33;
+            border-radius: 5px;
+            font-family:  'Poppins';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border: solid 1px #99cc33;
+
+        }
+        .signin{
+            position: relative;
+            height: 36px;
+            width: 95%;
+            left:2%;
+            margin-top: 20px;
+            border: solid 1px #99cc33;
+            background-color: #99cc33;
+            color: white;
+            border-radius: 5px;
+            font-family:  'Poppins';
+            font-size: 12px;
+            font-weight: bold;
+
+        }
+        .user{
+     position: relative;
+    color:black;
+    font-size:12px;
+    margin-top:10px;
+    left: 10px;
+font-family: 'Poppins';
+font-weight: bold;
+letter-spacing: 1px;
+        }
+        .email{
+            position: relative;
+            height: 36px;
+            width: 90%;
+            left:2%;
+            border-radius: 5px;
+    margin-top:10px;
+    border: solid 1.5px black;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+
+        }
+        .number{
+            width: 95%;
+            font-size: 28px;
+            border: solid 2px #ccc;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+            height: 36px;
+            left: 2%;
+            letter-spacing: 15px;
+        }
+        .number:focus{
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.5);
+        }
+        input:active{
+            transform: scale(0.95);
+        }
+        @font-face {
+    font-family: 'Poppins';
+    src: url("../static/poppins-regular.ttf");
+        }
+        .selection{
+            position: relative;
+            margin-top: 10px;
+            border: solid 1px black;
+        }
+}
+    </style>
+    </head>
+    <body>
+        {%block agent_body%}
+        {%endblock%}
+    </body>
+    </html>

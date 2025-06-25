@@ -1,0 +1,19 @@
+{% extends "agent_base.html" %}
+{% block title %}verify{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block agent_body %}
+<div class="body">
+    <div class="banner_log">
+        <h2 class="message"></2>
+        <h2 class="message_log">Verify</2>
+    </div>
+    <div class="inputs_log">
+        <form id="agent_log">
+        <input type="text" class="number" minlength="6" pattern="\d{6}" maxlength="6" required>
+        <p class="forgot_pass">Enter the code sent to email@gmail.com</p>
+        <p class="forgot_pas">Didn't receive code?</p>
+        <a href="/create_pass"><input type="button" class="signin" value="Verify"></a>
+    </form>
+    </div>
+    </div>
+{%endblock%}

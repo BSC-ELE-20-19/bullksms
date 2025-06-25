@@ -1,0 +1,62 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}reports{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/admin"><p class="na" id="dashboard">Dashboard</p></a>
+    <a href="/send"><p class="na" id="bulk">Bulk SMS</p></a>
+    <a href="/profile"><p class="na" id="profile">Profile</p></a>
+        <a href="/reports"><p class="na" id="reports">Reports</p></a>
+
+    <a href="/login"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+         #reports{
+        color: #99cc33;
+        font-weight:bold;
+        transition: 0.3s;
+    letter-spacing: 1px;
+    }
+    </style>
+   
+{%endblock%}
+{% block content %}
+<div class="body">
+        <h2 class="heading">Generate reports</h2>
+    <div class="agent_form" id="agent_form">
+        <div class="container">
+            <div class="hidden" id="shader">
+                <div id="registerPop" class="hidden">
+                    <div class="loader" id="loader"></div>
+                    <div class="tick hidden" id="tick">&#10004;</div>
+                    <p class="userd" id="inproc">Adding...</p>
+                    <p class="userd" id="done">Successful!</p>
+                    <input type="button" class="ok" id="ok" value="Ok">
+                </div>
+            </div>
+            <form action="/generate_report">
+            <h3 class="heading_fil">Specify zone and area range</h3>
+            <div class="loca">
+            <p class="user">Select District</Select></p>
+              <select class="choose_speed" id="zone_name" name="zone_name" required>
+                <option value="">Select District</option>
+                {%for row in zone_list %}
+                <option value="{{row[1]}}">{{row[1]}}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div class="loca">
+                <p class="user">Time range</Select></p>
+                  <select class="choose_speed" id="time_range" name="time_range">
+                    <option value="24h">Last 24hours</option>
+                    <option value="7d">Last 7days</option>
+                    <option value="30d">Last 30days</option>
+                </select>
+            </div>
+            <button type="submit" class="submit">Generate report</button>
+        </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

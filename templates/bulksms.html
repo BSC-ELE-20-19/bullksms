@@ -1,0 +1,103 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}Bulk SMS{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/admin"><p class="na" id="dashboard">Dashboard</p></a>
+    <a href="/send"><p class="na" id="bulk">Bulk SMS</p></a>
+    <a href="/profile"><p class="na" id="profile">Profile</p></a>
+        <a href="/reports"><p class="na" id="reports">Reports</p></a>
+
+    <a href="/logout_admin"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+        #bulk{
+               color:#99cc33;
+               font-weight:bold;
+               transition: 0.3s;
+           letter-spacing: 1px;
+           }
+   </style>
+{%endblock%}
+{% block content %}
+<div class="body">
+    <h2 class="heading">Send Messages</h2>
+    <div class="agent_form" id="agent_form">
+        <div class="default"></div>
+        <div class="container">
+            <div class="hidden" id="shader">
+                <div id="registerPop" class="hidden">
+                    <div class="loader" id="loader"></div>
+                    <div class="tick hidden" id="tick">&#10004;</div>
+                    <p class="userd" id="inproc">Adding...</p>
+                    <p class="userd" id="done">Successful!</p>
+                    <input type="button" class="ok" id="ok" value="Ok">
+                </div>
+            </div>
+            <form id="bulkSMS" method="POST" enctype="multipart/form-data">
+            <p class="user">Contact List</p>
+             <input type="file" class="contacts" name="excel_file" accept=".xlsx" required>
+            <p class="user">Message</p>
+            <textarea class="usermessage" maxlength="165" rows="8" placeholder="Enter your message. Ensure that itds within 165 characters" id="message" name="message" required></textarea>
+            <input type="submit" class="submit" value="Send SMS">
+        </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('bulkSMS').addEventListener('submit', function(event){
+    event.preventDefault();
+    const form = document.getElementById('bulkSMS');
+    const formData = new FormData(form);
+     
+      const popup=document.getElementById('registerPop');
+      const loader=document.getElementById('loader');
+      const tick=document.getElementById('tick');
+      const inproc=document.getElementById('inproc');
+      const done=document.getElementById('done');
+      const closer=document.getElementById('ok');
+      const shader=document.getElementById('shader');
+
+
+      if(formData){
+
+      popup.classList.remove('hidden');
+      loader.classList.remove('hidden');
+      shader.classList.remove('hidden');
+      tick.classList.add('hidden');
+      closer.classList.add('hidden');
+      inproc.classList.remove('hidden');
+      done.classList.add('hidden');
+      sendData(formData);
+      }
+
+function sendData(formData) {
+      $.ajax({
+        type: 'POST',
+        url: '/send_sms',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: 
+        function(response){
+            loader.classList.add('hidden');
+                tick.classList.remove('hidden')
+                inproc.classList.add('hidden');
+                done.classList.remove('hidden');
+                closer.classList.remove('hidden');
+        },
+        error: function(err){
+            alert("Error: " + err.responseText);
+        }
+    });
+}
+
+  });
+  document.getElementById('ok').addEventListener('click', function(event){
+      location.reload();
+  });
+</script>
+{%endblock%}

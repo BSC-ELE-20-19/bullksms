@@ -1,0 +1,107 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}statistics{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/admin"><p class="na" id="dashboard">Dashboard</p></a>
+    <a href="/send"><p class="na" id="bulk">Bulk SMS</p></a>
+    <a href="/profile"><p class="na" id="profile">Profile</p></a>
+        <a href="/reports"><p class="na" id="reports">Reports</p></a>
+
+    <a href="/login"><p class="na" id="signout">Signout</p></a>
+    </div>
+{%endblock%}
+{% block content %}
+<div class="body_stats">
+    <div class="chest">
+        <h2 class="heading">Real time Statistics</h2>
+        <div class="child-1-min_stats">
+            <label for="zones" class="sta">Filter:</label>
+            <select class="gender" id="zones">
+                <option value="all">All Districts</option>
+                </select>
+        </div>
+</div>
+<h3 class="heading_fil">System Overview</h3>
+
+<div class="abs_stats">
+    <div class="child-1">
+        <div class="charts_stats">
+            <div class="chart-3_stats" id="time-container">
+                    <h3 class="heading" id="over">General Statistics</h3>
+                    <div class="child-1-min_stats">
+                        <input type="button" class="times" value="24hours" id="day">
+                        <input type="button" class="times" value="1w" id="week">
+                        <input type="button" class="times" value="1m" id="month">
+                    </div>
+                    <div id="line-container"></div>
+            </div>
+            
+            
+            
+            <div class="chart-2_stats">
+                <h3 class="heading">Age Distribution</h3>
+
+                <div class="age_stats">
+                <p class="new_subb" id="age_text_a">18-35 Years:</p>
+                <div class="progress">
+                    <div id="group_a" class="progressBar" role="progressbar" aria-valuenow="0" 
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="new_subb" id="age_text_b">30-49 Years:</p>
+                <div class="progress">
+                    <div id="group_b" class="progressBar" role="progressbar" aria-valuenow="0" 
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="new_subb" id="age_text_c">50-99 Years:</p>
+                <div class="progress">
+                    <div id="group_c" class="progressBar" role="progressbar" aria-valuenow="0" 
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="charts_stats_two">
+            <div class="chart-2_stats">
+                <h3 class="heading" >Gender Distribution</h3>
+                <div id="don-container"></div>
+                <div class="don-chart_details">
+                    <p class="gender_count" id="male_text">- Males</p>
+                    <p class="gender_count" id="female_text">- Females</p>
+            </div>
+            </div>
+            
+            <div class="chart-3_stats" id="time-container">
+                <h3 class="heading">Numbers and Target</h3>
+                <div class="view_target">
+                    <div class="target_left">
+                        <p class="new_t" id="target_all">Target:</p>
+                        <p class="new_t" id="total_all">Total members: -</p>
+                      <form id="edit_target">
+                        <div class="edit_target">
+                            <input type="number" class="in_target" id="target_text" required>
+                        </div>
+                        <input type="submit" class="sub" id="save-target" value="Set Target">
+                    </form>
+                    </div>
+                </div>
+        </div>
+        </div>
+        <div class="charts_stats_two">
+        <div class="chart-4_stats" id="time-container">
+            <h3 class="heading" id="comp_text">Members registered in different zones</h3>
+            <div class="child-1-min_stats">
+                <input type="button" class="times" value="Zones" id="zone_btn">
+                <input type="button" class="times" value="Area" id="area_btn">
+            </div>
+            <div id="comparisons-container"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+<script src="{{url_for('static', filename='statistics.js')}}"></script>
+<script src="{{url_for('static', filename='Chart.js')}}"></script>
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends "agent_base.html" %}
+{% block title %}login{% endblock %}
+{% block agent_body %}
+<div class="body">
+    <div class="banner_log">
+        <h2 class="message"></2>
+        <h2 class="message_log">Sign in</2>
+    </div>
+    {%if error_message%}
+    <p class="alerted">{{error_message}}</p>
+    {%endif%}
+    <div class="inputs_log">
+        <form action="/agent_log" method="post">
+        <p class="user">Username</p>
+        <input type="text" class="email" placeholder="Username" name="authorised_username" required>
+        <p class="user">Password</p>
+        <input type="password" class="email" placeholder="Password" name="authorised_password" required>
+        <input type="submit" class="signin" value="Sign in">
+    </form>
+    </div>
+    </div>
+{%endblock%}

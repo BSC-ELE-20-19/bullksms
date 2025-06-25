@@ -1,0 +1,19 @@
+{% extends "agent_base.html" %}
+{% block title %}activate{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block agent_body %}
+<div class="body">
+    <div class="banner_log">
+        <h2 class="message"></2>
+        <h2 class="message_log">Activate</2>
+    </div>
+    <div class="inputs_log">
+        <form id="agent_log">
+        <p class="user">Email</p>
+        <input type="text" class="email" placeholder="Email" required>
+        <p class="forgot_pass">Enter your authorized email address</p>
+        <a href="/verify"><input type="button" class="signin" value="Activate"></a>
+    </form>
+    </div>
+    </div>
+{%endblock%}

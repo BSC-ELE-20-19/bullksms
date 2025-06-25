@@ -1,1 +1,103 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}Home{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/admin"><p class="na" id="dashboard">Dashboard</p></a>
+    <a href="/send"><p class="na" id="bulk">Bulk SMS</p></a>
+    <a href="/profile"><p class="na" id="profile">Profile</p></a>
+        <a href="/reports"><p class="na" id="reports">Reports</p></a>
 
+    <a href="/logout_admin"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+        #dashboard{
+               color:#99cc33;
+               font-weight:bold;
+               transition: 0.3s;
+           letter-spacing: 1px;
+           }
+   </style>
+{%endblock%}
+{% block content %}
+<div class="body_home" id="body">
+    <h2 class="heading">Dashboard</h3>
+        <div class="cards">
+            <div class="card-top">
+                <div class="cards-ch">
+                    <h3 class="headings">New members</h3>
+                    <p class="new" id="new_members">Loading...</p>
+                </div>
+                <div class="cards-ch">
+                    <h3 class="headings">Total members</h3>
+                    <p class="new"  id="total_members">Loading...</p>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <div class="cards-ch">
+                    <h3 class="headings">Growth Rate</h3>
+                    <p class="new" id="growth_rate">-</p>
+                </div>
+                <div class="cards-ch">
+                    <h3 class="headings">Target</h3>
+                    <p class="new" id="all_target">-</p>
+                </div>
+               
+            </div>
+        </div>
+        <div class="child-1-min_dash">
+            <h3 class="heading_fil">Current data trends</h3>
+            <a href="/stats"><h3 class="heading_fil_two">See all</h3></a>
+        </div>
+
+        <div class="child-1">
+            <div class="charts">
+                <div class="toper">
+                <div class="chart-1" id="time-container">
+                    <h3 class="heading">Members over Last 24hours</h3>
+                    <div id="line-container" class="line-chart"></div>
+                </div>
+                <div class="chart-2">
+                        <h3 class="heading">Gender</h3>
+                        <div id="don-container"></div>
+                        <div class="don-chart_details">
+                                <p class="gender_count" id="male_text">- Male</p>
+                                <p class="gender_count" id="female_text">- Female</p>
+                        </div>
+                </div>
+
+                <div class="chart-2" id="time-container">
+                    <h3 class="heading">Age</h3>
+                    <div class="age_stats">
+                <p class="new_subb" id="age_text_a">18-35 Years:</p>
+                <div class="progress">
+                    <div id="group_a" class="progressBar" role="progressbar" aria-valuenow="0" 
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="new_subb" id="age_text_b">30-49 Years:</p>
+                <div class="progress">
+                    <div id="group_b" class="progressBar" role="progressbar" aria-valuenow="0" 
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="new_subb" id="age_text_c">50-99 Years:</p>
+                <div class="progress">
+                    <div id="group_c" class="progressBar" role="progressbar" aria-valuenow="0" 
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                  </div>
+                   </div>
+                
+            </div>
+                <div class="botto">
+                </div>
+            </div>
+        </div>
+    
+</div>
+<script>
+    
+</script>
+<script src="{{url_for('static', filename='home.js')}}"></script>
+<script src="{{url_for('static', filename='Chart.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,96 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}Home{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/agent_home"><p class="na" id="dashboard">Home</p></a>
+    <a href="/registry"><p class="na" id="inbox">Registry</p></a>
+    <a href="/logout_agent"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+        #dashboard{
+               color:#99cc33;
+               font-weight:bold;
+               transition: 0.3s;
+           letter-spacing: 1px;
+           }
+   </style>
+{%endblock%}
+{% block content %}
+<style>
+    
+    .banner{
+            position: relative;
+            width: 90%;
+            left:5%;
+            border: solid 1px #99cc33;
+            background-color: #99cc33;
+            border-radius: 5px;
+            height: 300px;
+            margin-top: 50px;
+
+        }
+        .banner_log{
+            position: relative;
+            width: 90%;
+            left:5%;
+            border: solid 1px white;
+            background-color: white;
+            border-radius: 5px;
+            height: 120px;
+            align-items: center;
+            align-content: center;
+        }
+        .message_agent{
+            position: relative;
+     font-family: 'Poppins';
+     font-size: 38px;
+     color: white;
+     width:60%;
+     left:10px;
+     margin-top: 5px;
+
+        }
+        .inputs{
+            position: relative;
+            width: 90%;
+            left:5%;
+            display: flex;
+            flex-direction: column;
+        }
+        .activate{
+            position: relative;
+            height: 50px;
+            width: 95%;
+            left:2%;
+            margin-top: 20px;
+            background-color: white;
+            color: red;
+            border-radius: 5px;
+            font-family:  'Poppins';
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border: solid 1px red;
+
+        }
+        input:active{
+            transform: scale(0.95);
+        }
+</style>
+{%if noticed %}
+<div class="notice">
+    <p class="not">{{noticed}}: You are using a default password <a href="/create_pass">Click here</a> to set new password</p>
+</div>
+{%endif%}
+<div class="body">
+    <div class="banner">
+        <h2 class="message_agent">Hi there,</2>
+        <h2 class="message_agent">{{username}}</2>
+    </div>
+    <div class="inputs">
+        <a href="/select_zone"><input type="button" class="activate" value="Register member &#10142"></a>
+    </div>
+</div>
+{%endblock%}

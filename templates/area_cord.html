@@ -1,0 +1,58 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}area_cord{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/admin"><p class="na" id="dashboard">Dashboard</p></a>
+    <a href="/profile"><p class="na" id="profile">Profile</p></a>
+    <a href="/area_cord"><p class="na" id="const">Area Coordinators</p></a>
+    <a href="/zone_cord"><p class="na" id="agent">Zone Coordinators</p></a>
+        <a href="/reports"><p class="na" id="reports">Reports</p></a>
+
+    <a href="/login"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+        #const{
+               color:red;
+               font-weight:bold;
+               transition: 0.3s;
+           letter-spacing: 1px;
+           width: 100%;
+           }
+   </style>
+{%endblock%}
+{% block content %}
+<div class="body">
+    <div class="chest">
+        <h2 class="heading">Area Coordinators</h2>
+        <h3 class="heading" id="total_agents">Total</h3>
+    <div class="child-1-min_area">
+        <label for="dob">Filter:</label>
+        <select class="gender" id="area">
+            <option value="all">All Areas</option>
+            </select>
+            <a href="/new_area_cord"><input type="button" class="create" value="Add New"></a>
+    </div>
+    </div>
+    <div class="abs_agents_table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Area</th>
+                    <th>Action</th>
+                </tr>
+                
+            </thead>
+            <tbody id="table_body">
+            </tbody>
+        </table>
+    
+        </div>
+</div>
+<script src="{{url_for('static', filename='area_cord.js')}}"></script>
+{%endblock%}

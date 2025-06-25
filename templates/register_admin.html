@@ -1,0 +1,24 @@
+{% extends "agent_base.html" %}
+{% block title %}Register admin{% endblock %}
+{% block agent_body %}
+<div class="body">
+    <div class="banner_log">
+        <h2 class="message"></2>
+        <h2 class="message_log">Register admin</2>
+    </div>
+    {%if error_message%}
+    <p class="alerted">{{error_message}}</p>
+    {%endif%}
+    <div class="inputs_log">
+        <form action="/register_admin" method="post">
+        <p class="user">Username</p>
+        <input type="text" class="email" placeholder="Username" name="user_username" required>
+        <p class="user">Password</p>
+        <input type="password" class="email" placeholder="Password" name="user_password" required>
+        <p class="user">Verify Password</p>
+        <input type="password" class="email" placeholder="Very password" name="confirm_password" required>
+        <input type="submit" class="signin" value="Register">
+    </form>
+    </div>
+    </div>
+{%endblock%}

@@ -1,0 +1,48 @@
+<!--CHANGING THE CURLY BRACKETS FROM BASE -->
+{% extends "index.html" %}
+{% block title %}profile{% endblock %}
+<!--INFACT, YOU CAN ADD A WHOLE NEW HTML IN THS TAG-->
+{% block sidebar %}
+<div class="navigation">
+    <a href="/admin"><p class="na" id="dashboard">Dashboard</p></a>
+    <a href="/send"><p class="na" id="bulk">Bulk SMS</p></a>
+    <a href="profile"><p class="na" id="profile">Profile</p></a>
+        <a href="/reports"><p class="na" id="reports">Reports</p></a>
+
+    <a href="/logout_admin"><p class="na" id="signout">Signout</p></a>
+    </div>
+    <style>
+        #profile{
+               color:#99cc33;
+               font-weight:bold;
+               transition: 0.3s;
+           letter-spacing: 1px;
+           }
+   </style>
+{%endblock%}
+{% block content %}
+<div class="body">
+    <div class="chest_fil">
+            <h2 class="heading">Profile</h3>
+    <div class="prof_img">
+        <div class="prof_banner">
+        </div>
+        <div class="prof_picture">
+            A
+        </div>
+    </div>
+        <div class="profile_prof">
+            <div class="prof">
+                <p class="admin_name">{{username}}</p>
+        </div>
+        </div>
+        <div class="profile_prof">
+            <div class="prof">
+                <a href="/change_name"><p class="p_actions">Change username</p></a>
+                <a href="/change_pass"><p class="p_actions">Change password</p></a>
+                <a href="/logout_admin"><p class="p_actions">Logout</p></a>
+            </div>
+        </div>
+</div>
+</div>
+{%endblock%}

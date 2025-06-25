@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 updateAges(data.age_a,data.age_b,data.age_c,data.members_count,data.new_members,data.target_count)
            }
            else{
-               updateAges(0,0,0,1)
+               updateAges(15,12,10,11)
            }
             
         });
@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function(){
             }
            
         }
+        generateDonutChart(35,65);
+        updateAges(10,4,2,11);
+        generateLineChart();
 
         
         async function fetchTimeStats(identifier,time_interval,zone_name,area_name){
@@ -117,8 +120,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 datasets:[{
                     data:[40,60],
                     backgroundColor:[
-                        'rgb(255, 0, 0,0.4)',
-                        'rgba(255, 0, 0)'
+                        'rgba(246, 151, 33,0.4)',
+                        'rgb(246, 151, 33)'
 
                     ]
                 }]
@@ -141,22 +144,29 @@ document.addEventListener('DOMContentLoaded', function(){
 
         }
 
-        function generateLineChart(time_frame,count){
-           var lables=[10,20,30,21,63,82,10,20,30,21,63,10,20,30,21,63,82,10,20,30,21,63,82,10,20,30,21,63,82,10,20,30,21,63,82,82,10,20,30,21,63,82,10,20,30,21,63,82];
-           var data=[10,20,30,21,63,82,10,20,30,21,63,10,20,30,21,63,82,10,20,30,21,63,82,10,20,30,21,63,82,10,20,30,21,63,82,82,10,20,30,21,63,82,10,20,30,21,63,82];
-            var $chartContainer=$('<div>').appendTo('#line-container');
+        function generateLineChart(){
+        var labels = Array.from({ length: 50 }, (_, i) => i + 1);
+
+            var data = [
+            50, 54, 58, 62, 66, 67, 67, 66, 68, 70,
+            81, 82, 82, 81, 79, 77, 74, 71, 68, 64,
+            60, 56, 52, 64, 66, 65, 60, 62, 66, 66,
+            67, 68, 70, 70, 71, 72, 73, 74, 75, 77,
+            77, 77, 77, 79, 81, 82, 82, 81, 79, 76
+            ];
+var $chartContainer=$('<div>').appendTo('#line-container');
             var $canvas=$('<canvas>').appendTo($chartContainer);
             var ctx=$canvas[0].getContext('2d');
             var chartTwo=new Chart(ctx,{
                 type:'line',
                 data:{
-                    labels:time_frame,
+                    labels:labels,
                     datasets:[{
                         label:'Registered members',
-                        data:count,
+                        data:data,
                         fill:true,
-                        backgroundColor:'rgba(255,0,0,0.2)',
-                        borderColor:'rgb(255,0,0)',
+                        backgroundColor:'rgba(246, 151, 33,0.2)',
+                        borderColor:'rgb(246, 151, 33)',
                         borderWidth:1,
                         pointRadius:0.8,
                         tension:0.1,

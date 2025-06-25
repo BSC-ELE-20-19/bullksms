@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 datasets:[{
                     data:[40,60],
                     backgroundColor:[
-                        'rgba(246, 151, 33,0.4)',
-                        'rgb(246, 151, 33)'
+                        'rgba(153, 204, 51,0.4)',
+                        'rgb(153, 204, 51)'
 
                     ]
                 }]
@@ -165,8 +165,8 @@ var $chartContainer=$('<div>').appendTo('#line-container');
                         label:'Registered members',
                         data:data,
                         fill:true,
-                        backgroundColor:'rgba(246, 151, 33,0.2)',
-                        borderColor:'rgb(246, 151, 33)',
+                        backgroundColor:'rgba(153, 204, 51,0.2)',
+                        borderColor:'rgb(153, 204, 51)',
                         borderWidth:1,
                         pointRadius:0.8,
                         tension:0.1,
